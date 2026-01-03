@@ -42,7 +42,9 @@ app.use((req, res, next) => {
 
 
 app.use(cors({
-    origin: "https://scheduling-system-rhjn.vercel.app"
+    origin: "https://scheduling-system-rhjn.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // make sure OPTIONS is allowed
+    credentials: true, 
 }));
 // Middleware
 app.use(cors());

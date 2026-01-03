@@ -234,7 +234,8 @@ async function verifyOtpController(req, res) {
 
 const verifyJwt = async (req, res) => {
   const token = req.cookies.token;
-
+  console.log("Verifying token:", token);
+  
   if (!token) {
     return res.json({
       success: false,

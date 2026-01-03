@@ -33,6 +33,12 @@ const corsOptions = {
   credentials: true, // if you use cookies/sessions
 };
 
+app.use((req, res, next) => {
+  console.log("METHOD:", req.method);
+  console.log("PATH:", req.path);
+  next();
+});
+
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());

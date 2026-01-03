@@ -13,6 +13,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors({
+    origin: "https://scheduling-system-rhjn.vercel.app"
+}));
+
 // Allowed origins for CORS
 const allowedOrigins = [
   process.env.URL_1,

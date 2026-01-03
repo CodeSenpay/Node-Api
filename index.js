@@ -13,29 +13,26 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({
-    origin: "https://scheduling-system-rhjn.vercel.app"
-}));
 
-// Allowed origins for CORS
-const allowedOrigins = [
-  process.env.URL_1,
-  process.env.URL_2,
-  process.env.URL_3,
-];
+// // Allowed origins for CORS
+// const allowedOrigins = [
+//   process.env.URL_1,
+//   process.env.URL_2,
+//   process.env.URL_3,
+// ];
 
-// CORS options
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, etc.)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS blocked by origin"));
-    }
-  },
-  credentials: true, // if you use cookies/sessions
-};
+// // CORS options
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     // Allow requests with no origin (like mobile apps, curl, etc.)
+//     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("CORS blocked by origin"));
+//     }
+//   },
+//   credentials: true, // if you use cookies/sessions
+// };
 
 app.use((req, res, next) => {
   console.log("METHOD:", req.method);
@@ -43,8 +40,12 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(cors({
+    origin: "https://scheduling-system-rhjn.vercel.app"
+}));
 // Middleware
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use("/", router);
 

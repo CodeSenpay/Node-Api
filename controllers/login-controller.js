@@ -118,6 +118,8 @@ async function loginStudentController(req, res) {
       sameSite: "strict",
       maxAge: 8 * 60 * 60 * 1000, // 8 hours
     });
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("Token set in cookie:", token);
 
     return res.json({ success: true, user: response.user });
   } catch (error) {

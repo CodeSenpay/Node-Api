@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export function authenticate(req, res, next) {
   const token = req.cookies.token;
+  console.log("Mao ni ang Token nga naas Browser ron: ", token);
   if (!token) return res.status(401).json({ error: "No token" });
 
   try {

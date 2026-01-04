@@ -4,6 +4,7 @@ import cors from "cors";
 import http from "http";
 import { Server } from "socket.io";
 import router from "./routes.js";
+import cookieParser from "cookie-parser";
 // import rateLimit from 'express-rate-limit';
 
 // Load environment variables
@@ -36,6 +37,7 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser()); // Parse cookies
 app.use("/", router);
 
 // Create HTTP server
